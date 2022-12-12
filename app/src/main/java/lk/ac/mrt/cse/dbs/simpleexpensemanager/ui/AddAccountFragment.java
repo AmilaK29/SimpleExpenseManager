@@ -16,6 +16,7 @@
 
 package lk.ac.mrt.cse.dbs.simpleexpensemanager.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import android.widget.EditText;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.R;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.DbHandler;
 
 import static lk.ac.mrt.cse.dbs.simpleexpensemanager.Constants.EXPENSE_MANAGER;
 /**
@@ -39,7 +41,10 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
     private EditText initialBalance;
     private Button addAccount;
 
+
+
     public static AddAccountFragment newInstance(ExpenseManager expenseManager) {
+
         AddAccountFragment addAccountFragment = new AddAccountFragment();
         Bundle args = new Bundle();
         args.putSerializable(EXPENSE_MANAGER, expenseManager);
@@ -97,6 +102,7 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
                 if (currentExpenseManager != null) {
                     currentExpenseManager.addAccount(accountNumStr, bankNameStr, accountHolderStr,
                             Double.parseDouble(initialBalanceStr));
+
                 }
                 cleanUp();
                 break;
